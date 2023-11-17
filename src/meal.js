@@ -30,7 +30,16 @@ function buttonClicked(){
         document.getElementById("display").innerHTML = `<br>Meal Id: ${idMeal} <br> Meal Name: ${strMeal} <br> Category of the meal: ${strCategory} <br> Meal Origin: ${strArea} <br>`
         document.getElementById("display").appendChild(mealImage);
         document.getElementById("display2").innerHTML = ` Instructions:<br> ${strInstructions}`
-        document.getElementById("link").innerHTML =`Video Tutorial: ${strYoutube} <br> Website: ${strSource}`
+        
+        var videoLink = document.createElement("a");
+                videoLink.href = strYoutube; // Set the href attribute to the YouTube URL
+                videoLink.innerHTML = `Video Tutorial: ${strYoutube}`;
+                videoLink.target = "_blank"; // Open the link in a new tab
+                document.getElementById("link").innerHTML = "";
+                document.getElementById("link").appendChild(videoLink);
+
+                // Add the website source link
+                document.getElementById("link").innerHTML += `<br> Website: ${strSource}`;
     } else {
         console.log("No meals found for the given input.");
     }
